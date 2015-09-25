@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Hacking Hera</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   </head>
   <body>
     <header>
       Hacking Hera
     </header>
 
-    <section ng-app="">
-      <form>
-        <input type="text" />
+    <section ng-app="myApp">
+      <form ng-submit="sendCode()">
+        <input type="text" name="codeInput" ng-model="codeString" placeholder="Code here" />
+        <button type="submit">Submit</button>
       </form>
     </section>
 
     <section>
       
     </section>
-    <script src="/bower_components/angular/angular.js"></script>
+    <script src="libs/angular/angular.js"></script>
     <script src="index.js"></script>
-    <script src="/stylesheets/style.css"></script>
   </body>
 </html>
