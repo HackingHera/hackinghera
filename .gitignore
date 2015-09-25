@@ -38,5 +38,5 @@ Thumbs.db
 
 # Other stuff #
 ###############
-node_modules/
-bower
+node_modules
+bower_components
