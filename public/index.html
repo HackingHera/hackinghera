@@ -9,11 +9,14 @@
       Hacking Hera
     </header>
 
-    <section ng-app="myApp">
-      <form ng-submit="sendCode()">
-        <input type="text" name="codeInput" ng-model="codeString" placeholder="Code here" />
-        <button type="submit">Submit</button>
+    <section ng-app="myApp" ng-controller="appController">
+      <form ng-submit="sendPost()">
+        <textarea type="text" name="codeInput" ng-model="codeString" placeholder="Code here"  required></textarea>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
+      {{ codeString }}
     </section>
 
     <section>
