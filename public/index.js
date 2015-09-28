@@ -5,14 +5,21 @@ angular.module('myApp', [])
   $scope.codeString = '';
   $scope.sendPost = function (){
     handleRequest.sendCode($scope.codeString);
-
+  }
 }])
 
+
 .service('handleRequest', ['$http', function ($http) {
-  
   this.sendCode = function(codeString) {
+    console.log('sendCode activated');
     $http.post('/api/context', {
-      code: codeString
+      codeString: codeString
+    })
+    .then(function (result) {
+      console.log("post result is", result);
+      console.log("post sent");
+    }, function (err) {
+      console.log("err is", err);
     });
   } 
 
