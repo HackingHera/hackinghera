@@ -5,31 +5,46 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="libs/Materialize/dist/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libs/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="libs/codemirror/theme/monokai.css">
+    <link rel="stylesheet" type="text/css" href="libs/codemirror/addon/lint/lint.css">
+    
   </head>
   <body ng-app="myApp" ng-controller="appController">
     <!-- <div class="container"> -->
       <div class="row">
-        <div class="formContainer col s6">
+        <div class="form-container col s6">
           <form ng-submit="sendPost()" >
-            <div class="input-field">
+            <!-- <div class="input-field">
               <textarea class="materialize-textarea" id="codearea" type="text" name="codeInput" ng-model="codeString"required></textarea>
               <label for="codearea">Code</label>
-            </div>
+            </div> -->
+
+            <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeString"></ui-codemirror>
+
             <div>
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <button ng-disabled="JSHINT.errors.length" class="btn waves-effect waves-light" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
               </button>
             </div>
           </form>
+
         </div>  
-        <div class="context-container col s6">
-          <div ng-include="'views/contextTree.html'" onload='colorIndex = colorIndex + 1'></div>
+        <div class="context-container col s6" ng-show="hasSubmitted">
+          <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
         </div>
       </div>
     <!-- </div> -->
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>
-    <script src="index.js"></script>
+    <script type="text/javascript" src="libs/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="libs/angular-ui-codemirror/ui-codemirror.js"></script>
+    <script type="text/javascript" src="libs/codemirror/mode/javascript/javascript.js"></script>
+    <script type="text/javascript" src="libs/codemirror/addon/edit/closebrackets.js"></script>
+    <script type="text/javascript" src="libs/codemirror/addon/lint/lint.js"></script>
+    <script type="text/javascript" src="libs/codemirror/addon/lint/javascript-lint.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
+    <script src="javascript/index.js"></script>
   </body>
 </html>

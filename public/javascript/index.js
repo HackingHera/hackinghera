@@ -1,19 +1,33 @@
-angular.module('myApp', [])
+angular.module('myApp', ['ui.codemirror'])
+
+
 
 .controller('appController', ['$scope', 'handleRequest', function ($scope, handleRequest){
   $scope.context = {test: 'test'};
   $scope.codeString = '';
   $scope.colors = ['green', 'red', 'blue', 'yellow', 'orange'];
   $scope.colorIndex = 0;
+
+  // TODO: figure out how to remove this
+  $scope.hasSubmitted = false;
+
   $scope.sendPost = function (){
     // $scope.context.text = handleRequest.sendCode($scope.codeString);
     handleRequest.sendCode($scope.codeString, function(data) {
       $scope.context = data;
+      $scope.hasSubmitted = true;
     });
   };
-
-
-
+  $scope.editorOptions = {
+    lineWrapping : true,
+    lineNumbers: true,
+    mode: 'javascript',
+    theme: 'monokai',
+    autofocus: true,
+    autoCloseBrackets: true,
+    gutters: ["CodeMirror-lint-markers"],
+    lint: true
+  };
 }])
 
 .service('handleRequest', ['$http', function ($http) {
