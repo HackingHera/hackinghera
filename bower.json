@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "angular": "~1.4.6",
-    "Materialize": "materialize#~0.97.1"
+    "Materialize": "materialize#~0.97.1",
+    "codemirror": "~5.7.0",
+    "angular-ui-codemirror": "~0.3.0"
   }
 }
