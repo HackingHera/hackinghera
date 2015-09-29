@@ -57,7 +57,10 @@ var callExpression = function() {
 var expressionStatement = function() {
 
 };
-
+// program
+// variabledeclaration
+// variabledeclarator
+// functionexpression
 module.exports.parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
 
   var kids = childrenOf(rootNode);
@@ -95,12 +98,16 @@ module.exports.parseASTRecursively = function(rootNode, nodeMap, currentExecutio
           var localVariable = {};
           var key = currentDeclaration.id.name;
           if (expressionBeingAssigned === 'FunctionExpression') {
-            if (expressionBeingAssigned.params) {
-              console.log(expressionBeingAssigned.params);
-              params = outputParams(expressionBeingAssigned.params);
-              localVariable[key] = params;
-              currentExecutionContext.addLocalVariable(localVariable);
-            } else if (currentDeclaration.init.body.body.length === 0) {
+
+            //TODO '{f}'
+
+            // if (expressionBeingAssigned.params) {
+            //   console.log(expressionBeingAssigned.params);
+            //   params = outputParams(expressionBeingAssigned.params);
+            //   localVariable[key] = params;
+            //   currentExecutionContext.addLocalVariable(localVariable);
+            //} else
+            if (currentDeclaration.init.body.body.length === 0) {
               val = currentDeclaration.id.name;
             } else {
               var check = currentDeclaration.init.body.body[0].argument;
@@ -112,11 +119,12 @@ module.exports.parseASTRecursively = function(rootNode, nodeMap, currentExecutio
             }
           } else if (expressionBeingAssigned === 'CallExpression') {
             val = currentDeclaration.init.callee.name + '()';
-          } else if (expressionBeingAssigned === 'VariableDeclarator') {
-            key = expressionBeingAssigned.id.name;
-            console.log(key);
-            localVariable[key]  = '{f}';//outputParams(expressionBeingAssigned.init.params);
           }
+          //else if (expressionBeingAssigned === 'VariableDeclarator') {
+          //   key = expressionBeingAssigned.id.name;
+          //   console.log(key);
+          //   localVariable[key]  = '{f}';//outputParams(expressionBeingAssigned.init.params);
+          //}
           localVariable[key] = val;
           currentExecutionContext.addLocalVariable(localVariable);
         }
