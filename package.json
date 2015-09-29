@@ -1,5 +1,5 @@
 {
-  "name": "hacking",
+  "name": "hackinghera",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,31 @@
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
+    "esprima": "^2.6.0",
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "ramda": "^0.17.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {
+    "bower": "^1.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackinghera/hackinghera.git"
+  },
+  "author": [
+    "Rex Suter <rex.suter@gmail.com>",
+    "Verlon Smith <vsmith3113@gmail.com>",
+    "Doug Shamoo <doug.shamoo@gmail.com>",
+    "Victoria Tapia <tapia.victoria5070@gmail.com>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hackinghera/hackinghera.git/issues"
+  },
+  "homepage": "https://github.com/hackinghera/hackinghera.git#readme"
 }

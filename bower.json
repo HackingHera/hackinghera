@@ -1,0 +1,23 @@
+{
+  "name": "hackinghera",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hackinghera/hackinghera.git",
+  "authors": [
+    "Rex Suter <rex.suter@gmail.com>",
+    "Verlon Smith <vsmith3113@gmail.com>",
+    "Doug Shamoo <doug.shamoo@gmail.com>",
+    "Victoria Tapia <tapia.victoria5070@gmail.com>"
+  ],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "Materialize": "materialize#~0.97.1"
+  }
+}
