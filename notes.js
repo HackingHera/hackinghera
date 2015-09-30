@@ -87,3 +87,25 @@
   // }
   // ]
   // });
+
+ // var testObj = JSON.stringify({ __contextName__: 'global',
+ // __localVariables__: [ { hero: 'aHero()' }, { newSaga: '{f}' } ],
+ // __innerScopes__: 
+ //  [ { __contextName__: 'newSaga',
+ //      __localVariables__: [ { foil: 'aFoil()' }, { saga: '{f}' } ],
+ //      __innerScopes__: 
+ //       [ { __contextName__: 'saga',
+ //           __localVariables__: [ { deed: 'aDeed()' } ],
+ //           __innerScopes__: [ null ] },
+ //         { __contextName__: 'saga',
+ //           __localVariables__: [ { deed: 'aDeed()' } ],
+ //           __innerScopes__: [ null ] } ] },
+ //    { __contextName__: 'newSaga',
+ //      __localVariables__: [ { foil: 'aFoil()' }, { saga: '{f}' } ],
+ //      __innerScopes__: 
+ //       [ { __contextName__: 'saga',
+ //           __localVariables__: [ { deed: 'aDeed()' } ],
+ //           __innerScopes__: [ null ] },
+ //         { __contextName__: 'saga',
+ //           __localVariables__: [ { deed: 'aDeed()' } ],
+ //           __innerScopes__: [ null ] } ] } ] });  
