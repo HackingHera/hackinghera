@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var esprima = require('esprima');
+var util = require('../serverHelpers/utility.js');
+var OutputNode =  require('../serverHelpers/outputnode.js');
+var parser = require('../serverHelpers/parser.js');
+// var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,32 +13,19 @@ router.get('/', function(req, res, next) {
 
 router.post('/api/context', function(req, res) {
   console.log('request is', req.body);
-  res.writeHead(200);
-  
-  // TODO: get actual response obj
-  var testObj = JSON.stringify({ __contextName__: 'global',
- __localVariables__: [ { hero: 'aHero()' }, { newSaga: '{f}' } ],
- __innerScopes__: 
-  [ { __contextName__: 'newSaga',
-      __localVariables__: [ { foil: 'aFoil()' }, { saga: '{f}' } ],
-      __innerScopes__: 
-       [ { __contextName__: 'saga',
-           __localVariables__: [ { deed: 'aDeed()' } ],
-           __innerScopes__: [ null ] },
-         { __contextName__: 'saga',
-           __localVariables__: [ { deed: 'aDeed()' } ],
-           __innerScopes__: [ null ] } ] },
-    { __contextName__: 'newSaga',
-      __localVariables__: [ { foil: 'aFoil()' }, { saga: '{f}' } ],
-      __innerScopes__: 
-       [ { __contextName__: 'saga',
-           __localVariables__: [ { deed: 'aDeed()' } ],
-           __innerScopes__: [ null ] },
-         { __contextName__: 'saga',
-           __localVariables__: [ { deed: 'aDeed()' } ],
-           __innerScopes__: [ null ] } ] } ] });  
 
-  res.end(testObj);
+  var rootNode = esprima.parse(req.body.codeString);
+  // console.log("rootNode result = ", rootNode);
+  var nodeMap = util.findAllFunctionNodes(rootNode);
+  // console.log("nodeMap", nodeMap);
+  var outputObject = new OutputNode();
+  // console.log("outputObject is:", outputObject);
+  parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+  // console.log("outputobject: ", outputObject);
+
+  // outputObject.formatOutput();
+
+  res.send(JSON.stringify(outputObject));
 });
 
 module.exports = router;
