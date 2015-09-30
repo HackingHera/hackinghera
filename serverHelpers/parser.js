@@ -61,7 +61,7 @@ var expressionStatement = function() {
 // variabledeclaration
 // variabledeclarator
 // functionexpression
-module.exports.parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
+module.exports.parseASTRecursively = parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
 
   var kids = childrenOf(rootNode);
   var val;
