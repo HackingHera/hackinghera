@@ -19,7 +19,9 @@
   "description": "",
   "main": "app.js",
   "devDependencies": {
-    "bower": "^1.5.3"
+    "bower": "^1.5.3",
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
   },
   "repository": {
     "type": "git",

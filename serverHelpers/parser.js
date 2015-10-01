@@ -72,7 +72,7 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
       if (kids[i].type === 'FunctionDeclaration') {
         funcKey = funcDeclarations(kids[i].id.name);
         if (kids[i].params) {
-          params =  '{f}' + '(' + outputParams(kids[i].params) + ')';
+          params =  '{f}';// + '(' + outputParams(kids[i].params) + ')';
         }
           // funcStorage[funcKey] = params;
           // currentExecutionContext.addLocalVariable(funcStorage);
@@ -121,6 +121,12 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
             val = currentDeclaration.init.callee.name + '()';
           } else if (expressionBeingAssigned === 'Literal') {
             val = currentDeclaration.init.value;
+          } else if (expressionBeingAssigned === 'ArrayExpression') {
+            val = 'Array['+currentDeclaration.init.elements.length+']';
+          } else if (expressionBeingAssigned === 'ObjectExpression') {
+            val = '{Object}';
+          } else if (currentDeclaration.init.name === 'undefined') {
+            val = undefined;
           }
           //else if (expressionBeingAssigned === 'VariableDeclarator') {
           //   key = expressionBeingAssigned.id.name;
