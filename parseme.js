@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+var testFunction2 = function(name) {
+  return name;
+};
+=======
 
 var localVarFn1 = function(name) {
   return name;
@@ -18,3 +23,4 @@ var testFunction = function(name) {
       // functionexpression
 
 
+>>>>>>> 2baeb2107b89924028b0df9a3fc3bb03ff8fcab0
