@@ -1,3 +1,6 @@
+var testFunction2 = function(name) {
+  return name;
+};
 
 
 var firsString = 'valueheregoesitdoes';

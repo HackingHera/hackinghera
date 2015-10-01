@@ -2,16 +2,28 @@
 <html>
   <head>
     <title>Hacking Hera</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="libs/Materialize/dist/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/lib/codemirror.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/theme/monokai.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/addon/lint/lint.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     
   </head>
-  <body ng-app="myApp" ng-controller="appController">
-    <!-- <div class="container"> -->
+  <body ng-app="myApp" ng-controller="appController" class="teal lighten-5">
+
+    <nav>
+      <div class="nav-wrapper teal">
+        <a href="#" class="brand-logo">Hacking Hera</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Tab 1</a></li>
+          <li><a href="#">Tab 2</a></li>
+          <li><a href="#">Tab 3</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="main">
       <div class="row">
         <div class="form-container col s6">
           <form ng-submit="sendPost()" >
@@ -34,7 +46,7 @@
           <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>

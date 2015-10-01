@@ -1,9 +1,7 @@
-<div class="card-panel" ng-style="{'background-color': '{{ colors[colorIndex] }}'}">
-  <div class="white-text">
-    <h4>{{ context.__contextName__ }}</h4>
-    <div ng-if="context.__localVariables__" ng-repeat="localVar in context.__localVariables__">
-      <p ng-repeat="(name, val) in localVar">{{ name }} = {{ val }}</p>
-    </div>
-    <div ng-if="context.__innerScopes__" ng-repeat="context in context.__innerScopes__" ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
+<div class="card-panel context-card z-depth-2 black-text" ng-style="{'background-color': '{{ colors[colorIndex % colors.length] }}'}">
+  <h5>{{ context.__contextName__ }}</h5>
+  <div ng-if="context.__localVariables__" ng-repeat="localVar in context.__localVariables__">
+    <p class="local-var" ng-repeat="(name, val) in localVar">{{ name }} = {{ val }}</p>
   </div>
+  <div ng-if="context.__innerScopes__" ng-repeat="context in context.__innerScopes__" ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
 </div>
