@@ -14,11 +14,11 @@ OutputNode.prototype.addChildOutputNode = function(ctxName) {
   return nodeToAdd;
 };
 OutputNode.prototype.formatOutput = function() {
-  if (this.__innerScopes__.length === 0) {
+  if (this.__innerScopes__.length == 0) {
     this.__innerScopes__.push(null);
   } else {
     for (var i = 0; this.__innerScopes__.length; i++) {
-    this.__innerScopes__[i].formatOutput();
+      this.__innerScopes__[i].formatOutput();
     }
   }
 };

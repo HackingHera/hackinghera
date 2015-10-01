@@ -1,26 +1,20 @@
-<<<<<<< HEAD
 var testFunction2 = function(name) {
   return name;
 };
-=======
 
-var localVarFn1 = function(name) {
-  return name;
+
+var firsString = 'valueheregoesitdoes';
+var numero = 23;
+var nnnnnnnull = null;
+var unnnnndefined = undefined;
+var abool = true;
+var otherbool = false;
+var identifiesVariableThing = ['hey', 'dude'];
+var aNumArray = [1,2,3,4];
+var identifiesObjectLiteral = {'key':'noValHere'};
+function someFuncHere() {
+
 };
+var anotherFNHere = function() {
 
-var localVarFn2 = function() {
-  return 'strVal';
 };
-
-var testFunction = function(name) {
-  var anything = '';
-  return name;
-};
-
-// program
-  // variabledeclaration
-    // variabledeclarator
-      // functionexpression
-
-
->>>>>>> 2baeb2107b89924028b0df9a3fc3bb03ff8fcab0
