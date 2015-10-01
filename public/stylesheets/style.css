@@ -1,1 +1,15 @@
-
+.local-var {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.context-card {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px dashed black;
+}
+/*.CodeMirror {
+  height: auto;
+}*/
+#main {
+  margin: 50px;
+}
