@@ -10,7 +10,9 @@ module.exports.findAllFunctionNodes = function(inputTree) {
     }
     if (nd.type === 'VariableDeclaration') {
       for (var x = 0; x < nd.declarations.length; x++) {
-        if (nd.declarations[x].init.type === 'FunctionExpression') {
+        if(nd.declarations[x].init === null) {
+          continue;
+        } else if (nd.declarations[x].init.type === 'FunctionExpression') {
           functionMapping[nd.declarations[x].id.name] = nd.declarations[x];
         }
       }

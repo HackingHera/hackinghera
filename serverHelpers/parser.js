@@ -65,7 +65,6 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
   var val;
   var params;
   var funcKey;
-  // console.log(kids);
   if (kids && kids.length) {
     for (var i = 0; i < kids.length; i++) {
       var funcStorage = {};
@@ -74,65 +73,53 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
         if (kids[i].params) {
           params =  '{f}';// + '(' + outputParams(kids[i].params) + ')';
         }
-          // funcStorage[funcKey] = params;
-          // currentExecutionContext.addLocalVariable(funcStorage);
-        //}
-        // if (kids[i].body.type === 'BlockStatement') {
-        //   //console.log(kids[i].body);
-        //   var arr = [];
-        //   R.forEach(function(item) {
-        //     if (item.argument.left.value || item.argument.right.value) {
-        //     arr.push(item.argument.left.value || item.argument.right.value);
-        //     }
-        //   }, kids[i].body.body);
-          funcStorage[funcKey] = params;//.concat(arr);
-          currentExecutionContext.addLocalVariable(funcStorage);
-        //}
+        funcStorage[funcKey] = params;//.concat(arr);
+        currentExecutionContext.addLocalVariable(funcStorage);
       }
       if (kids[i].type === 'VariableDeclaration') {
         for (var j = 0; j < kids[i].declarations.length; j++) {
           var currentDeclaration = kids[i].declarations[j];
-          var expressionBeingAssigned = currentDeclaration.init.type;
+          var expressionBeingAssigned;
+          if(currentDeclaration.init!==null) {
+            expressionBeingAssigned = currentDeclaration.init.type;
+          }
           var localVariable = {};
           var key = currentDeclaration.id.name;
-          if (expressionBeingAssigned === 'FunctionExpression') {
+          if(expressionBeingAssigned===null) {
+            val = '{undefined}';
+          } else if(!currentDeclaration.init) {
+            val = '{undefined}';
+          } else if(expressionBeingAssigned === 'FunctionExpression') {
             val = '{f}';
-            // if (expressionBeingAssigned.params) {
-            //   console.log(expressionBeingAssigned.params);
-            //   params = outputParams(expressionBeingAssigned.params);
-            //   localVariable[key] = params;
-            //   currentExecutionContext.addLocalVariable(localVariable);
-            //} else
-            //if (currentDeclaration.init.body.body.length === 0) {
-            //  val = currentDeclaration.id.name;
-            //} else {
-            //  var check = currentDeclaration.init.body.body[0].argument;
-            //  if (check !== undefined) {
-            //    val = currentDeclaration.init.body.body[0].argument.value;
-            //  } else if (currentDeclaration.id.name) {
-            //    val = currentDeclaration.id.name;
-            //  }
-            //}
           } else if (expressionBeingAssigned === 'CallExpression') {
-            //TODO 2 scenarios to account for:
-            //TODO (1) function declaration [ex: 'function testFunction2() {}']
-            //TODO (2) function expression [ex: 'newSaga();']
-            console.log('### INSIDE CALLEXPRESSION IF BLOCK ###');
-            val = currentDeclaration.init.callee.name + '()';
+            if(currentDeclaration.init.callee.name) {
+              val = currentDeclaration.init.callee.name + '()';
+            } else if(currentDeclaration.init.callee.body.type == 'BlockStatement') {
+              var arr = currentDeclaration.init.callee.body.body;
+              if(arr.length === 0) {
+                val = undefined;
+              } else {
+                for(var k=0; k<arr.length; k++) {
+                  if(arr[k].type=='ReturnStatement'){
+                    val = arr[k].argument.value;
+                  }
+                }
+              }
+            }
           } else if (expressionBeingAssigned === 'Literal') {
-            val = currentDeclaration.init.value;
+            var tmpVal = currentDeclaration.init.value;
+            if(tmpVal===null){
+              val = '{Null}';
+            } else {
+              val = tmpVal;
+            }
           } else if (expressionBeingAssigned === 'ArrayExpression') {
             val = 'Array['+currentDeclaration.init.elements.length+']';
           } else if (expressionBeingAssigned === 'ObjectExpression') {
             val = '{Object}';
           } else if (currentDeclaration.init.name === 'undefined') {
-            val = undefined;
+            val = '{undefined}';
           }
-          //else if (expressionBeingAssigned === 'VariableDeclarator') {
-          //   key = expressionBeingAssigned.id.name;
-          //   console.log(key);
-          //   localVariable[key]  = '{f}';//outputParams(expressionBeingAssigned.init.params);
-          //}
           localVariable[key] = val;
           currentExecutionContext.addLocalVariable(localVariable);
         }
