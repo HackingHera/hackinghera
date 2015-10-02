@@ -8,9 +8,12 @@
   border: 1px grey;
   border-style: outset;
 }
-/*.CodeMirror {
+.CodeMirror {
   height: auto;
-}*/
+}
+.CodeMirror-scroll {
+  min-height: 400px;
+}
 #main {
   margin: 50px;
 }
