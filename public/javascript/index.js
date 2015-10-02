@@ -16,7 +16,6 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
 //   })
 // })
 
-
 .service('handleRequest', ['$http', function ($http) {
   this.sendCode = function(codeString, cb) {
     console.log('sendCode activated');
@@ -70,7 +69,7 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
   // $scope.colors = ['#00a6b5', '#f7974a', '#5cba89', '#93a8cd', '#bb5475'];
 
   // blue - purple - darker blue purple - orange - yellow, all kind of dull
-  // $scope.colors = ['#1b85b8', '#484d70', '#3B4C6D', '#ae5a41', '#c6c386'];
+   //$scope.colors = ['#1b85b8', '#484d70', '#3B4C6D', '#ae5a41', '#c6c386'];
 
   // material design circus
   $scope.colors = ['#4caf50', '#f44336', '#2196f3', '#ffeb3b', '#9c27b0'];
@@ -94,7 +93,6 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
   // $scope.colors = ['hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)'];
 
   $scope.colorIndex = 0;
-
 
   $scope.sendPost = function (){
     handleRequest.sendCode($scope.codeString, function(data) {

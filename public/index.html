@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
   <head>
     <title>Hacking Hera</title>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="libs/codemirror/theme/monokai.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/addon/lint/lint.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-    
+
   </head>
   <body ng-app="myApp" ng-controller="appController" class="teal lighten-5">
 
@@ -24,32 +24,45 @@
       </div>
     </nav>
     
-    <div id="main">
+    <!-- <div id="main"> -->
       <div class="row">
         
         <!-- Code Mirror container -->
-        <div class="form-container col s6">
+        <div class="form-container form" ng-class="myForm">  <!--col s6-->
           <form ng-submit="sendPost()" >
             <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeString"></ui-codemirror>
             <div>
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <button class="btn waves-effect waves-light" type="submit" name="action" value="submit" ng-click="myForm='submitted'">Submit
                 <i class="material-icons right">send</i>
               </button>
             </div>
           </form>
-        </div>  
+        </div>
+
         
         <!-- Display Container: switches between execution contexts and lexical scopes -->
-        <div class="context-container col s6">
+       <!--  <div class="context-container col s6"> -->
           
           <!-- Tab design -->
-          <ul class="tabs">
+          <!-- <ul class="tabs">
             <li class="tab" ng-click="selectedView = 'context'"><a class="active" href="#">Execution Context</a></li>
             <li class="tab" ng-click="selectedView = 'lexical'"><a href="#">Lexical Scope</a></li>
           </ul>
+ -->
+       <!-- </div>  -->
+       <!-- illustration options  col s7 offset-s4"-->
+        <div class="context-container" ng-if="hasSubmitted">
+
+        <!-- Buttons -->        
+          <div class="row">
+            <a ng-click="selectedView = 'context'" class="waves-effect waves-light btn col s4 offset-s1">Context Exec</a>
+            <a ng-click="selectedView = 'lexical'" class="waves-effect waves-light btn col s4 offset-s2">Lexical Scope</a>
+          </div>
+        <!-- illustrations -->
+
           <div ng-switch on="selectedView">
             <div ng-switch-when="context">
-              <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1" ng-if="hasSubmitted"></div>
+              <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
             </div>
             <div ng-switch-when="lexical">
               <div ng-include="'views/lexicalView.html'"></div>
@@ -71,8 +84,10 @@
           </div> -->
 
         </div>
+
       </div>
-    </div>
+    <!-- </div> -->
+
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>
@@ -85,5 +100,6 @@
     <script type="text/javascript" src="libs/codemirror/addon/lint/javascript-lint.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
     <script src="javascript/index.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
   </body>
 </html>
