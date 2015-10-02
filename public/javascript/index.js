@@ -16,7 +16,6 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
 //   })
 // })
 
-
 .service('handleRequest', ['$http', function ($http) {
   this.sendCode = function(codeString, cb) {
     console.log('sendCode activated');
@@ -94,7 +93,6 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
   // $scope.colors = ['hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)', 'hsla(100, 85%, 40%, .4)'];
 
   $scope.colorIndex = 0;
-
 
   $scope.sendPost = function (){
     handleRequest.sendCode($scope.codeString, function(data) {
