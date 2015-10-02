@@ -1,21 +1,20 @@
-angular.module('myApp', ['ui.codemirror', /*'ngRoute'*/])
+angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
   
-  // .config(function($routeProvider) {
-  //   $routeProvider
-  //   .when('/', {
-  //     template: '<div id="test-div">hello</div>',
-  //     controller: 'appController'
-  //   })
-  //   .when('/context', {
-  //     template: '<div ng-include="\'./views/contextTree.html\'" onload="colorIndex = colorIndex + 1"></div>',
-  //     //templateUrl: '../views/contextTree.html',
-  //     controller: 'appController'
-  //   })
-  //   .when('/lexical', {
-  //     templateUrl: '../views/lexicalView.html',
-  //     controller: 'appController'
-  //   });
-  // })
+// .config(function($routeProvider) {
+//   $routeProvider
+//   .when('/context', {
+//     template: '<div ng-include="\'../views/contextTree.html\'" onload="colorIndex = colorIndex + 1"></div>',
+//     // templateUrl: '../views/contextTree.html',
+//     controller: 'appController'
+//   })
+//   .when('/lexical', {
+//     templateUrl: '../views/lexicalView.html',
+//     controller: 'appController'
+//   })
+//   .otherwise({
+//     template: ''
+//   })
+// })
 
 
 .service('handleRequest', ['$http', function ($http) {
