@@ -42,7 +42,7 @@ form {
 .form.submitted .CodeMirror {
   /*border: 5px solid yellow;*/
 }
-.context-container {
+.display-container {
   margin-top: 30px;
   float: right;
   margin-right: 50px;

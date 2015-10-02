@@ -41,25 +41,14 @@
 
         
         <!-- Display Container: switches between execution contexts and lexical scopes -->
-       <!--  <div class="context-container col s6"> -->
-          
+        <div class="display-container col 6">          
           <!-- Tab design -->
-          <!-- <ul class="tabs">
+          <ul class="tabs">
             <li class="tab" ng-click="selectedView = 'context'"><a class="active" href="#">Execution Context</a></li>
             <li class="tab" ng-click="selectedView = 'lexical'"><a href="#">Lexical Scope</a></li>
           </ul>
- -->
-       <!-- </div>  -->
-       <!-- illustration options  col s7 offset-s4"-->
-        <div class="context-container" ng-if="hasSubmitted">
 
-        <!-- Buttons -->        
-          <div class="row">
-            <a ng-click="selectedView = 'context'" class="waves-effect waves-light btn col s4 offset-s1">Context Exec</a>
-            <a ng-click="selectedView = 'lexical'" class="waves-effect waves-light btn col s4 offset-s2">Lexical Scope</a>
-          </div>
         <!-- illustrations -->
-
           <div ng-switch on="selectedView">
             <div ng-switch-when="context">
               <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
@@ -91,6 +80,7 @@
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="libs/codemirror/lib/codemirror.js"></script>
     <script type="text/javascript" src="libs/angular-ui-codemirror/ui-codemirror.js"></script>
@@ -100,6 +90,5 @@
     <script type="text/javascript" src="libs/codemirror/addon/lint/javascript-lint.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
     <script src="javascript/index.js"></script>
-    <script src="libs/angular-animate/angular-animate.js"></script>
   </body>
 </html>
