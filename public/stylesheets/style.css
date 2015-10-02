@@ -5,7 +5,8 @@
 .context-card {
   padding-top: 5px;
   padding-bottom: 5px;
-  border: 1px dashed black;
+  border: 1px grey;
+  border-style: outset;
 }
 /*.CodeMirror {
   height: auto;

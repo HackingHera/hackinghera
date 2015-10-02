@@ -1,6 +1,21 @@
-angular.module('myApp', ['ui.codemirror'])
-
-
+angular.module('myApp', ['ui.codemirror', /*'ngRoute'*/])
+  
+  // .config(function($routeProvider) {
+  //   $routeProvider
+  //   .when('/', {
+  //     template: '<div id="test-div">hello</div>',
+  //     controller: 'appController'
+  //   })
+  //   .when('/context', {
+  //     template: '<div ng-include="\'./views/contextTree.html\'" onload="colorIndex = colorIndex + 1"></div>',
+  //     //templateUrl: '../views/contextTree.html',
+  //     controller: 'appController'
+  //   })
+  //   .when('/lexical', {
+  //     templateUrl: '../views/lexicalView.html',
+  //     controller: 'appController'
+  //   });
+  // })
 
 .controller('appController', ['$scope', 'handleRequest', function ($scope, handleRequest){
   $scope.context = {test: 'test'};
@@ -43,6 +58,7 @@ angular.module('myApp', ['ui.codemirror'])
 
   // TODO: figure out how to remove this
   $scope.hasSubmitted = false;
+  $scope.selectedView = 'context';
 
   $scope.sendPost = function (){
     // $scope.context.text = handleRequest.sendCode($scope.codeString);
