@@ -69,7 +69,7 @@ angular.module('myApp', ['ui.codemirror'/*, 'ngRoute'*/])
   // $scope.colors = ['#00a6b5', '#f7974a', '#5cba89', '#93a8cd', '#bb5475'];
 
   // blue - purple - darker blue purple - orange - yellow, all kind of dull
-  // $scope.colors = ['#1b85b8', '#484d70', '#3B4C6D', '#ae5a41', '#c6c386'];
+   //$scope.colors = ['#1b85b8', '#484d70', '#3B4C6D', '#ae5a41', '#c6c386'];
 
   // material design circus
   $scope.colors = ['#4caf50', '#f44336', '#2196f3', '#ffeb3b', '#9c27b0'];
