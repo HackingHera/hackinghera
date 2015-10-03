@@ -55,3 +55,10 @@
  .animate-if.ng-enter {
     opacity: 0;
 }*/
+
+.form-fluid {
+  -webkit-transition: margin-left .5s linear;
+  -moz-transition: margin-left .5s linear;
+  -o-transition: margin-left .5s linear;
+  transition: margin-left .5s linear;
+}
