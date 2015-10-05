@@ -34,7 +34,7 @@ angular.module('myApp', ['ui.codemirror'])
 }])
 
 .service('codeService', [function() {
-  this.codeString = '';
+  this.codeString = exampleCode;
   this.context = {};
 
   var self = this;
@@ -87,3 +87,35 @@ angular.module('myApp', ['ui.codemirror'])
     lint: true
   };
 }]);
+
+// example code and comments for codeString to be initialized to
+var exampleCode = "/* \n" +
+"Welcome to Contextualize, the best tool for analyzing exectuion contexts in your javascript code.\n" +
+"An execution context is the environment within which a portion of script code executes. The call stack, in turn, can be thought of as an array of execution contexts.\n" +
+"Let's begin with a quick example:\n" +
+"*/\n" +
+
+"var teamName = 'Hacking Hera!';\n" +
+"var numTeamMembers = 4;\n" +
+"var outerFunction = function() {\n" +
+"  var rex = 'Rex Suter';\n" +
+"  var innerFunction = function() {\n" +
+"    var verlon = 'Verlon Smith';\n" +
+"    var superInnerFunction = function() {\n" +
+"      var victoria = 'Victoria Tapia';\n" +
+"      var superDuperInnerFunction = function() {\n" +
+"        var doug = 'Doug Shamoo';\n" +
+"        return 'awesome';\n" +
+"      };\n" +
+"      superDuperInnerFunction();\n" +
+"      return [1, 2, 3];\n" +
+"    };\n" +
+"    superInnerFunction();\n" +
+"    return a + b;\n" +
+"  };\n" +
+"  innerFunction();\n" +
+"  return 'something';\n" +
+"};\n" +
+"outerFunction();\n" +
+"outerFunction();\n" +
+"log();"
