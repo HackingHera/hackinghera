@@ -1,3 +1,4 @@
+<!-- Execution Context Template w/ recursive ng-include -->
 <div class="card-panel context-card z-depth-2 black-text" ng-style="{'background-color': '{{ colors[colorIndex % colors.length] }}'}">
   <h5>{{ context.__contextName__ }}</h5>
   <div ng-if="context.__localVariables__" ng-repeat="localVar in context.__localVariables__">

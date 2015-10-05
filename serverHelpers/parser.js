@@ -93,9 +93,9 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
           var localVariable = {};
           var key = currentDeclaration.id.name;
           if(expressionBeingAssigned===null) {
-            val = '{undefined}';
+            val = 'undefined';
           } else if(!currentDeclaration.init) {
-            val = '{undefined}';
+            val = 'undefined';
           } else if(expressionBeingAssigned === 'FunctionExpression') {
             val = '{f}';
           } else if (expressionBeingAssigned === 'CallExpression') {
@@ -108,7 +108,7 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
               } else {
                 for(var k=0; k<arr.length; k++) {
                   if(arr[k].type=='ReturnStatement'){
-                    val = arr[k].argument.value;
+                    val = '"' + arr[k].argument.value + '"';
                   }
                 }
               }
@@ -116,16 +116,20 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
           } else if (expressionBeingAssigned === 'Literal') {
             var tmpVal = currentDeclaration.init.value;
             if(tmpVal===null){
-              val = '{Null}';
+              val = 'null';
             } else {
-              val = tmpVal;
+              if (typeof tmpVal === "boolean" ||typeof tmpVal === "number") {
+                val = tmpVal;
+              } else {
+                val = '"' + tmpVal + '"';
+              }
             }
           } else if (expressionBeingAssigned === 'ArrayExpression') {
             val = 'Array['+currentDeclaration.init.elements.length+']';
           } else if (expressionBeingAssigned === 'ObjectExpression') {
             val = '{Object}';
           } else if (currentDeclaration.init.name === 'undefined') {
-            val = '{undefined}';
+            val = 'undefined';
           }
           localVariable[key] = val;
           currentExecutionContext.addLocalVariable(localVariable);
@@ -146,6 +150,35 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
             console.log('handle num--');
           }
         }
+      }
+      //TODO First Branching
+      else if(currentNode.type == 'ForStatement') {
+        var localVariable = {};
+        var key = 'Conditional';
+        localVariable[key] = 'ForStatement';
+        currentExecutionContext.addLocalVariable(localVariable);
+      } else if(currentNode.type == 'WhileStatement') {
+        var localVariable = {};
+        var key = 'Conditional';
+        localVariable[key] = 'WhileStatement';
+        currentExecutionContext.addLocalVariable(localVariable);
+      } else if(currentNode.type == 'DoWhileStatement') {
+        var localVariable = {};
+        var key = 'Conditional';
+        localVariable[key] = 'DoWhileStatement';
+        currentExecutionContext.addLocalVariable(localVariable);
+      }
+      //TODO Second Branching
+      else if(currentNode.type == 'IfStatement') {
+        var localVariable = {};
+        var key = 'Conditional';
+        localVariable[key] = 'IfStatement';
+        currentExecutionContext.addLocalVariable(localVariable);
+      } else if(currentNode.type == 'SwitchStatement') {
+        var localVariable = {};
+        var key = 'Conditional';
+        localVariable[key] = 'SwitchStatement';
+        currentExecutionContext.addLocalVariable(localVariable);
       }
     }
   }

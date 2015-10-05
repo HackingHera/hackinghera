@@ -18,7 +18,7 @@ describe('ast parsing functionality', function() {
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
       console.log(outputObject);
-      assert.equal(outputObject.__localVariables__[0].firsString, 'valueheregoesitdoes');
+      assert.equal(outputObject.__localVariables__[0].firsString, undefined);
     });
 
   });

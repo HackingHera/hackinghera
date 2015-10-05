@@ -16,7 +16,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[0].firsString, 'valueheregoesitdoes');
+      assert.equal(outputObject.__localVariables__[0].firsString, '"valueheregoesitdoes"');
     });
 
     it('should return the number value', function() {
@@ -61,7 +61,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[5].nnnnnnnull, '{Null}');
+      assert.equal(outputObject.__localVariables__[5].nnnnnnnull, 'null');
     });
 
     it('should return undefined', function() {
@@ -70,7 +70,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[6].unnnnndefined, '{undefined}');
+      assert.equal(outputObject.__localVariables__[6].unnnnndefined, 'undefined');
     });
 
     it('should return undefined when not initialized', function() {
@@ -79,7 +79,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[7].q, '{undefined}');
+      assert.equal(outputObject.__localVariables__[7].q, 'undefined');
     });
   });
 
@@ -100,7 +100,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[0].thing, 'stringVal');
+      assert.equal(outputObject.__localVariables__[0].thing, '"stringVal"');
     });
 
     it('should return a representation of any functions being invoked outside of the source file', function() {
@@ -131,7 +131,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__localVariables__[1].outerStr, 'outerString');
+      assert.equal(outputObject.__localVariables__[1].outerStr, '"outerString"');
     });
 
     it('outer primitive assignment - Objects', function() {
@@ -149,7 +149,7 @@ describe('ast parsing functionality', function() {
       nodeMap = util.findAllFunctionNodes(rootNode);
       outputObject = new OutputNode();
       parser.parseASTRecursively(rootNode, nodeMap, outputObject);
-      assert.equal(outputObject.__innerScopes__[0].__localVariables__[0].innerStr, 'innerString');
+      assert.equal(outputObject.__innerScopes__[0].__localVariables__[0].innerStr, '"innerString"');
     });
 
     it('inner primitive assignment - Arrays', function() {
