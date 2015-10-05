@@ -25,7 +25,7 @@ Be sure to include function invocations to see that function's context.
 
 ## Requirements
 
-- Node 0.10.x
+- Node 0.12.x
 - Angular ~1.4.6
 - Materialize ~0.97.1
 - Codemirror ~5.7.0
