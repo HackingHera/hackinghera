@@ -4,6 +4,7 @@
     <title>Contextualize</title>
     <link rel="stylesheet" type="text/css" href="libs/Materialize/dist/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="libs/angular-materialize/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/lib/codemirror.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/theme/monokai.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/addon/lint/lint.css">
@@ -19,10 +20,43 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="https://github.com/HackingHera/hackinghera">Github</a></li>
           <li><a ng-click="resetApp()" href="#">Home</a></li> 
-          <!-- <li><a href="#">About</a></li>-->
+          <!-- Modal Trigger -->
+          <li><a href="#aboutModal" modal>About</a></li>
         </ul>
       </div>
     </nav>
+
+    <!-- Modal Structure -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <h4> Created by:</h4>
+            <ul>
+              <li>
+                Rex Sutter: <a href="https://github.com/rex-en-abyme">Github</a> || 
+                <a href="https://www.linkedin.com/in/rexsuter">LinkedIn</a>               
+              </li>
+              <li>
+                Doug Shamoo: <a href="https://github.com/dougshamoo">Github</a> || 
+                <a href="https://www.linkedin.com/in/dougshamoo">LinkedIn</a>
+              </li>
+              <li>
+                Verlon Smith: <a href="https://github.com/kingedward35">Github</a> ||
+                <a href="https://www.linkedin.com/pub/verlon-smith/b4/609/959">LinkedIn</a>
+              </li>
+              <li>
+                Victoria Tapia: <a href="https://github.com/vtapia5070">Github</a> ||
+                <a href="https://www.linkedin.com/pub/verlon-smith/b4/609/959">LinkedIn</a>
+              </li>
+            </ul>
+            <h4> Contributors: </h4>
+            <ul>
+              <li><em>Your name here!<em></li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cool, Thanks!</a>
+        </div>
+    </div>
     
     <div id="main">
       <div class="row">
@@ -68,6 +102,7 @@
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-materialize/src/angular-materialize.js"></script>
 
     <!-- Karma/Jasmine Testing -->
     <script src="libs/angular-mocks/angular-mocks.js"></script>

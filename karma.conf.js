@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'public/libs/angular/angular.js',
+      'public/libs/angular-materialize/src/angular-materialize.js',
       'public/libs/angular-ui-codemirror/ui-codemirror.js',
       'public/libs/angular-mocks/angular-mocks.js',
       'node_modules/karma-jasmine/lib/boot.js',
