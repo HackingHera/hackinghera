@@ -15,11 +15,11 @@
     <!-- Header with example tabs -->
     <nav>
       <div class="nav-wrapper teal">
-        <a href="#" class="brand-logo">Hacking Hera</a>
+        <a href="#" class="brand-logo center">Hacking Hera</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Tab 1</a></li>
-          <li><a href="#">Tab 2</a></li>
-          <li><a href="#">Tab 3</a></li>
+          <!-- <li><a href="#">About</a></li>
+          <li><a href="#">Github</a></li>
+          <li><a href="#">Home</a></li> -->
         </ul>
       </div>
     </nav>
@@ -28,7 +28,7 @@
       <div class="row">
         
         <!-- Code Mirror container -->
-        <div class="form-container" ng-class="{'col s6': hasSubmitted, 'col s6 offset-s3': !hasSubmitted}">  <!--col s6-->
+        <div class="form-container form-fluid" ng-class="{'col s6': hasSubmitted, 'col s6 offset-s3': !hasSubmitted}">  <!--col s6-->
           <form ng-submit="sendPost()" >
             <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeString"></ui-codemirror>
             <div>
@@ -41,7 +41,7 @@
 
         
         <!-- Display Container: switches between execution contexts and lexical scopes -->
-        <div class="display-container col s6" ng-show="hasSubmitted">          
+        <div class="display-container" ng-class="{'col s6': hasSubmitted, 'col s1': !hasSubmitted}" ng-show="hasSubmitted">          
           <!-- Tab design -->
           <ul class="tabs">
             <li class="tab" ng-click="selectedView = 'context'"><a class="active" href="#">Execution Context</a></li>
@@ -82,6 +82,9 @@
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-animate/angular-animate.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
+
+    <script src="libs/angular-mocks/angular-mocks.js"></script>
+
     <script type="text/javascript" src="libs/codemirror/lib/codemirror.js"></script>
     <script type="text/javascript" src="libs/angular-ui-codemirror/ui-codemirror.js"></script>
     <script type="text/javascript" src="libs/codemirror/mode/javascript/javascript.js"></script>
