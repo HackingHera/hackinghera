@@ -4,9 +4,7 @@ var esprima = require('esprima');
 var util = require('../serverHelpers/utility.js');
 var OutputNode =  require('../serverHelpers/outputnode.js');
 var parser = require('../serverHelpers/parser.js');
-// var fs = require('fs');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -15,6 +13,7 @@ router.post('/api/context', function(req, res) {
   console.log('request is', req.body);
 
   var rootNode = esprima.parse(req.body.codeString);
+  console.log(parser.deepInspect(rootNode));
   // console.log("rootNode result = ", rootNode);
   var nodeMap = util.findAllFunctionNodes(rootNode);
   // console.log("nodeMap", nodeMap);
@@ -23,11 +22,10 @@ router.post('/api/context', function(req, res) {
   parser.parseASTRecursively(rootNode, nodeMap, outputObject);
   // console.log("outputobject: ", outputObject);
 
-  // outputObject.formatOutput();
+  var retThis = JSON.stringify(outputObject);
 
-  res.send(JSON.stringify(outputObject));
+  console.log(outputObject);
+  res.send(retThis);
 });
-
-
 
 module.exports = router;

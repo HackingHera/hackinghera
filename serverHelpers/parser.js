@@ -22,7 +22,13 @@ var childrenOf = function(node) {
     directChildrenNodes = node.body;
   } else if (node.type == 'VariableDeclarator') {
     directChildrenNodes = node.init.body.body;
-  } else {}
+  } else if(node.type == 'FunctionExpression') {
+    console.log('here in here');
+  } else if(node.type == 'FunctionDeclaration') {
+    directChildrenNodes = node.body.body;
+  } else {
+
+  }
   return directChildrenNodes;
 };
 
@@ -68,6 +74,7 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
   if (kids && kids.length) {
     for (var i = 0; i < kids.length; i++) {
       var funcStorage = {};
+      var currentNode = kids[i];
       if (kids[i].type === 'FunctionDeclaration') {
         funcKey = funcDeclarations(kids[i].id.name);
         if (kids[i].params) {
@@ -124,10 +131,20 @@ var parseASTRecursively = function(rootNode, nodeMap, currentExecutionContext) {
           currentExecutionContext.addLocalVariable(localVariable);
         }
       } else if (kids[i].type == 'ExpressionStatement') {
-        var ctxName = kids[i].expression.callee.name;
-        if (ctxName !== undefined) {
-          var nodeAdded = currentExecutionContext.addChildOutputNode(ctxName);
-          parseASTRecursively(nodeMap[ctxName], nodeMap, nodeAdded);
+        var currentNode = kids[i];
+        if(currentNode.expression) {
+          var currentExpression = currentNode.expression;
+          if(currentExpression.type=='CallExpression'){
+            // ex: doSomething();
+            if (kids[i].expression.callee.name !== undefined) {
+              var nodeAdded = currentExecutionContext.addChildOutputNode(kids[i].expression.callee.name);
+              parseASTRecursively(nodeMap[kids[i].expression.callee.name], nodeMap, nodeAdded);
+            }
+          } else if(currentExpression.type == 'UpdateExpression') {
+            // ex: num--;
+            // TODO Handle this
+            console.log('handle num--');
+          }
         }
       }
     }
