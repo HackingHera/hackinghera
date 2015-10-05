@@ -70,11 +70,13 @@ angular.module('myApp', ['ui.codemirror'])
 }]);
 
 // example code and comments for codeString to be initialized to
-var exampleCode = "/* \n" +
-"Welcome to Contextualize, the best tool for analyzing exectuion contexts in your javascript code.\n" +
-"An execution context is the environment within which a portion of script code executes. The call stack, in turn, can be thought of as an array of execution contexts.\n" +
+var exampleCode = "/*\n" +
+"Welcome to Contextualize!\n" +
+"This tool produces a visual representation of the execution contexts in your JS code.\n" +
+"An execution context is the environment within which a portion of script code executes.\n" +
+"The call stack, in turn, can be thought of as an array of execution contexts.\n" +
 "Let's begin with a quick example:\n" +
-"*/\n" +
+"*/\n\n" +
 
 "var teamName = 'Hacking Hera!';\n" +
 "var numTeamMembers = 4;\n" +
@@ -99,4 +101,4 @@ var exampleCode = "/* \n" +
 "};\n" +
 "outerFunction();\n" +
 "outerFunction();\n" +
-"log();"
+"someOtherFunction();"
