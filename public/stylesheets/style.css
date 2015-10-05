@@ -22,6 +22,11 @@
   margin: 50px;
 }
 
+.githubImg {
+  width: 20px;
+  height: auto;
+}
+
 .form-fluid {
   -webkit-transition: margin-left .5s linear;
   -moz-transition: margin-left .5s linear;

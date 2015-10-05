@@ -1,4 +1,4 @@
-angular.module('myApp', ['ui.codemirror'])
+angular.module('myApp', ['ui.codemirror', 'ui.materialize'])
   
 .service('handleRequest', ['$http', function ($http) {
   this.sendCode = function(codeString, cb) {
