@@ -1,12 +1,12 @@
-# Space Kitten
+# Contextualize
 
-> Pithy project description
+A simple illustration of your codes execution context!
 
 ## Team
 
-  - __Product Owner__: space cat
-  - __Scrum Master__: space cat
-  - __Development Team Members__: space cat, space cat
+  - __Product Owner__: Verlon Smith
+  - __Scrum Master__: Rex Suter
+  - __Development Team Members__: Doug Shamoo, Rex Suter, Verlon Smith, Victoria Tapia
 
 ## Table of Contents
 
@@ -20,15 +20,20 @@
 
 ## Usage
 
-> Some usage instructions
+Submit code, and enjoy the illustrated execution context! 
+Be sure to include function invocations to see that function's context. 
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Angular ~1.4.6
+- Materialize ~0.97.1
+- Codemirror ~5.7.0
+- Angular-ui-codemirror ~0.3.0
+- Express ~4.13.1
+- Esprima ^2.6.0
+- Cookie-parser ~1.3.5
+- Ramda ^0.17.1
 
 ## Development
 
