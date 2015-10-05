@@ -1,25 +1,25 @@
  <!DOCTYPE html>
 <html>
   <head>
-    <title>Hacking Hera</title>
+    <title>Contextualize</title>
     <link rel="stylesheet" type="text/css" href="libs/Materialize/dist/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/lib/codemirror.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/theme/monokai.css">
     <link rel="stylesheet" type="text/css" href="libs/codemirror/addon/lint/lint.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-
   </head>
+
   <body ng-app="myApp" ng-controller="appController" class="teal lighten-5">
 
     <!-- Header with example tabs -->
     <nav>
       <div class="nav-wrapper teal">
-        <a href="#" class="brand-logo center">Hacking Hera</a>
+        <a href="#" class="brand-logo center">Contextualize</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <!-- <li><a href="#">About</a></li>
-          <li><a href="#">Github</a></li>
-          <li><a href="#">Home</a></li> -->
+          <li><a href="https://github.com/HackingHera/hackinghera">Github</a></li>
+          <li><a ng-click="resetApp()" href="#">Home</a></li> 
+          <!-- <li><a href="#">About</a></li>-->
         </ul>
       </div>
     </nav>
@@ -28,7 +28,7 @@
       <div class="row">
         
         <!-- Code Mirror container -->
-        <div class="form-container form-fluid" ng-class="{'col s6': hasSubmitted, 'col s6 offset-s3': !hasSubmitted}">  <!--col s6-->
+        <div class="form-container form-fluid" ng-class="{'col s6': hasSubmitted, 'col s6 offset-s3': !hasSubmitted}">
           <form ng-submit="sendPost()" >
             <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeString"></ui-codemirror>
             <div>
@@ -38,14 +38,14 @@
             </div>
           </form>
         </div>
-
         
         <!-- Display Container: switches between execution contexts and lexical scopes -->
-        <div class="display-container" ng-class="{'col s6': hasSubmitted, 'col s1': !hasSubmitted}" ng-show="hasSubmitted">          
+        <div class="display-container" ng-class="{'col s6': hasSubmitted, 'col s1': !hasSubmitted}" ng-show="hasSubmitted"> 
+
           <!-- Tab design -->
           <ul class="tabs">
             <li class="tab" ng-click="selectedView = 'context'"><a class="active" href="#">Execution Context</a></li>
-            <li class="tab" ng-click="selectedView = 'lexical'"><a href="#">Lexical Scope</a></li>
+           <!--  <li class="tab" ng-click="selectedView = 'lexical'"><a href="#">Lexical Scope</a></li> -->
           </ul>
 
         <!-- illustrations -->
@@ -53,38 +53,26 @@
             <div ng-switch-when="context">
               <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1"></div>
             </div>
+            <!-- TODO: lexical Scope display
             <div ng-switch-when="lexical">
               <div ng-include="'views/lexicalView.html'"></div>
-            </div>
+            </div> -->
           </div>
-
-          <!-- Button design -->
-          <!-- <div class="row">
-            <a ng-click="selectedView = 'context'" class="waves-effect waves-light btn col s4 offset-s1">Execution Context</a>
-            <a ng-click="selectedView = 'lexical'" class="waves-effect waves-light btn col s4 offset-s2">Lexical Scope</a>
-          </div>
-          <div ng-switch on="selectedView">
-            <div ng-switch-when="context">
-              <div ng-include="'views/contextTree.html'" onload="colorIndex = colorIndex + 1" ng-if="hasSubmitted"></div>
-            </div>
-            <div ng-switch-when="lexical">
-              <div ng-include="'views/lexicalView.html'"></div>
-            </div>
-          </div> -->
 
         </div>
 
       </div>
     </div>
 
+    <!-- Front-end build -->
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/Materialize/dist/js/materialize.js"></script>
     <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-animate/angular-animate.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
 
+    <!-- Karma/Jasmine Testing -->
     <script src="libs/angular-mocks/angular-mocks.js"></script>
 
+    <!-- Codemirror build -->
     <script type="text/javascript" src="libs/codemirror/lib/codemirror.js"></script>
     <script type="text/javascript" src="libs/angular-ui-codemirror/ui-codemirror.js"></script>
     <script type="text/javascript" src="libs/codemirror/mode/javascript/javascript.js"></script>
@@ -92,6 +80,9 @@
     <script type="text/javascript" src="libs/codemirror/addon/lint/lint.js"></script>
     <script type="text/javascript" src="libs/codemirror/addon/lint/javascript-lint.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
+
+    <!-- Main javascript file -->
     <script src="javascript/index.js"></script>
+
   </body>
 </html>
