@@ -114,5 +114,62 @@ describe('ast parsing functionality', function() {
 
   });
 
-});
+  describe('local variable declarations within a function ', function() {
 
+    it('outer primitive assignment - Arrays', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__localVariables__[0].outerArr, 'Array[2]');
+    });
+
+    it('outer primitive assignment - Strings', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__localVariables__[1].outerStr, 'outerString');
+    });
+
+    it('outer primitive assignment - Objects', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__localVariables__[2].outerObj, '{Object}');
+    });
+
+    it('inner primitive assignment - Strings', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__innerScopes__[0].__localVariables__[0].innerStr, 'innerString');
+    });
+
+    it('inner primitive assignment - Arrays', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__innerScopes__[0].__localVariables__[1].innerArr, 'Array[3]');
+    });
+
+    it('inner primitive assignment - Objects', function() {
+      var fileContents = fs.readFileSync('./test/testCases/innerPrimitiveAssignmentTest.js', 'utf8');
+      rootNode = esprima.parse(fileContents);
+      nodeMap = util.findAllFunctionNodes(rootNode);
+      outputObject = new OutputNode();
+      parser.parseASTRecursively(rootNode, nodeMap, outputObject);
+      assert.equal(outputObject.__innerScopes__[0].__localVariables__[2].innerObj, '{Object}');
+    });
+
+  });
+
+});
